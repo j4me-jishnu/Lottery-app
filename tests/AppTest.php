@@ -4,7 +4,6 @@ use PHPUnit\Framework\TestCase;
 final class AppTest extends TestCase{
   public static function setUpBeforeClass(): void{
   }
-
   protected function setUp():void{
   }
 
@@ -125,10 +124,19 @@ final class AppTest extends TestCase{
     $app=new App();
     $app->lockSlot("");
   }
+  public function testAppCanShowAgentCollectionByDate(): void{
+    $app=new App();
+    $result=$app->getAgentDailyCollectionByDate("1","2020-07-08");
+    $this->assertEquals("2562",$result);
+  }
+  public function testAppCannotShowAgentCollectionByDateIfInvalidData(): void{
+    $this->expectExceptionMessage("Invalid date or agent");
+    $app=new App();
+    $app->getAgentDailyCollectionByDate("","2020-02-21");
+  }
 
   protected function tearDown():void{
   }
-
   public static function tearDownAfterClass():void{
   }
 

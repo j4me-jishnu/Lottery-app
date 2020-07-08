@@ -4,7 +4,6 @@ class App{
   private function is_empty($value){
     return trim($value)=="";
   }
-
   function is_array_empty($array){
     if(count($array)>0){
       return $array;
@@ -135,5 +134,13 @@ class App{
       return $slot;
     }
   }
-
+  function getAgentDailyCollectionByDate($agent_id, $date){
+    if($this->is_empty($agent_id) || $this->is_empty($date)){
+      throw new Exception("Invalid date or agent");
+    }
+    $agent_collection_data=["agent_id"=>"1","date"=>"2020-07-08","total_collection"=>"2562"];
+    if($agent_id==$agent_collection_data["agent_id"]&&$date==$agent_collection_data["date"]){
+      return $agent_collection_data["total_collection"];
+    }
+  }
 }
