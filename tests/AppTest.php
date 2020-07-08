@@ -104,6 +104,27 @@ final class AppTest extends TestCase{
     $result=$app->addAgent($agent_details);
     $this->assertNotEquals(false,$result);
   }
+  public function testAppCanBlockAgent(): void{
+    $app=new App();
+    $result=$app->blockAgent("1");
+    print_r($result);
+    $this->assertEquals(false, $result);
+  }
+  public function testAppCannotRunIfInvalidAgentId(){
+    $this->expectExceptionMessage("Invalid agent id");
+    $app=new App();
+    $app->blockAgent("");
+  }
+  public function testAppCanLockSlot(): void{
+    $app=new App();
+    $result=$app->lockSlot("123");
+    $this->assertEquals("123",$result);
+  }
+  public function testAppCannotlockSlotIfInvalidSlot(): void{
+    $this->expectExceptionMessage("Invalid length of number");
+    $app=new App();
+    $app->lockSlot("");
+  }
 
   protected function tearDown():void{
   }

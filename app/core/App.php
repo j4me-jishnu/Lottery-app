@@ -124,5 +124,16 @@ class App{
       return $agent_details;
     }
   }
+  function blockAgent($agent_id){
+    if($this->is_empty($agent_id)){
+      throw new Exception("Invalid agent id");
+    }
+    return $agent_details["status"]=false;
+  }
+  function lockSlot($slot){
+    if($this->validateSlotLength($slot)){
+      return $slot;
+    }
+  }
 
 }
