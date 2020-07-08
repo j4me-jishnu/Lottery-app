@@ -111,7 +111,18 @@ class App{
     }
     print_r($winners);
   }
-  function testFunction(){
-    echo "this function is for testing git working correctly";
+  function addAgent($agent_details){
+    if(is_array_empty($agent_details)){
+      return $agent_details;
+    }
   }
+  function is_array_empty($array){
+    if(count($array)>0){
+      return $array;
+    }
+    else{
+      throw new Exception("Invalid array");
+    }
+  }
+
 }

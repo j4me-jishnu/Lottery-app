@@ -86,7 +86,19 @@ final class AppTest extends TestCase{
     $result=$app->adminLogin("jishnu","Admin123#");
     $this->assertEquals(true,$result);
   }
-  
+  public function testAppCanTestArrayEmptyOrNot(): void{
+    $app=new app();
+    $array=["1","jishnu"];
+    $result=$app->is_array_empty($array);
+    $this->assertNotEquals(false,$result);
+  }
+  public function testAppReturnErrorIfNoValueInArray(){
+    $this->expectExceptionMessage("Invalid array");
+    $app=new app();
+    $array=[];
+    $app->is_array_empty($array);
+  }
+
   protected function tearDown():void{
   }
 
