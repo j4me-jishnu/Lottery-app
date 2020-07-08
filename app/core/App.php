@@ -5,6 +5,14 @@ class App{
     return trim($value)=="";
   }
 
+  function is_array_empty($array){
+    if(count($array)>0){
+      return $array;
+    }
+    else{
+      throw new Exception("Invalid array");
+    }
+  }
   function findLSKWinners($winning_number,$players){
     if(empty($winning_number) || empty($players)){
       throw new Exception("No valid input given");
@@ -112,16 +120,8 @@ class App{
     print_r($winners);
   }
   function addAgent($agent_details){
-    if(is_array_empty($agent_details)){
+    if($this->is_array_empty($agent_details)){
       return $agent_details;
-    }
-  }
-  function is_array_empty($array){
-    if(count($array)>0){
-      return $array;
-    }
-    else{
-      throw new Exception("Invalid array");
     }
   }
 

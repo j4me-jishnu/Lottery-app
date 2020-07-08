@@ -98,6 +98,12 @@ final class AppTest extends TestCase{
     $array=[];
     $app->is_array_empty($array);
   }
+  public function testAppCanAddAgent(): void{
+    $app=new App();
+    $agent_details=["id"=>"1", "name"=>"jishnu", "username"=>"jemejishnu@yahoo.com", "password"=>"123"];
+    $result=$app->addAgent($agent_details);
+    $this->assertNotEquals(false,$result);
+  }
 
   protected function tearDown():void{
   }
