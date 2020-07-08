@@ -111,4 +111,7 @@ class App{
     }
     print_r($winners);
   }
+  function testFunction(){
+    echo "this function is for testing git working correctly";
+  }
 }
