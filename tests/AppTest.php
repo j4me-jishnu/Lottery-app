@@ -32,12 +32,13 @@ final class AppTest extends TestCase{
     );
   }
 
-  public function testAppCannotShowLSKWinnersIfInvalidinput(){
-    $this->expectExceptionMessage("No valid input given");
-    $winning_number="";
-    $players=[];
+  public function testAppCannotShowLskWinnersIfInvalidInput(){
+    $this->expectExceptionMessage('No valid input given');
     $app=new App();
-    $app->findLSKWinners($winning_number,$players);
+    $app->findLSKWinners(
+      '',
+      []
+    );
   }
 
   public function testAppCanValidateSlotNumberDigits(){
