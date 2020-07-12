@@ -4,7 +4,8 @@ class App{
   private function is_empty($value){
     return trim($value)=="";
   }
-  function is_array_empty($array){
+
+  public function is_array_empty($array){
     if(count($array)>0){
       return $array;
     }
@@ -12,7 +13,8 @@ class App{
       throw new Exception("Invalid array");
     }
   }
-  function findLSKWinners($winning_number,$players){
+
+  public function findLSKWinners($winning_number,$players){
     if(empty($winning_number) || empty($players)){
       throw new Exception("No valid input given");
     }
@@ -24,7 +26,8 @@ class App{
     }
     return $winners;
   }
-  function validateSlotLength($slot){
+
+  public function validateSlotLength($slot){
     if(preg_match('/^[0-9]{3}$/', $slot)){
       return $slot;
     }
@@ -32,7 +35,8 @@ class App{
       throw new Exception("Invalid length of number");
     }
   }
-  function findLSKModWinners($winning_number,$players,$mod){
+
+  public function findLSKModWinners($winning_number,$players,$mod){
     if(empty($winning_number) || empty($players) || empty($mod)){
       throw new Exception("Invalid arguments");
     }
@@ -78,7 +82,8 @@ class App{
         break;
     }
   }
-  function validatePassword($password){
+
+  public function validatePassword($password){
     if(preg_match('/((?=.*\d)(?=.*[a-z])(?=.*[A_Z])(?=.*[$,@,-,#])).*/', $password)){
       return $password;
     }
@@ -86,7 +91,8 @@ class App{
       throw new Exception("Invalid password given");
     }
   }
-  function validatUsername($username){
+
+  public function validatUsername($username){
     if(preg_match('/\w{6,10}/', $username)){
       return $username;
     }
@@ -94,12 +100,14 @@ class App{
       throw new Exception("Invalid username given");
     }
   }
-  function adminLogin($username,$password){
+
+  public function adminLogin($username,$password){
     if($this->validatUsername($username) && $this->validatePassword($password)){
       return true;
     }
   }
-  function findBoxGameWinner($winning_number,$players){
+
+  public function findBoxGameWinner($winning_number,$players){
     $winners=[];
     $winning_number_arr=array_map('intval',str_split($winning_number));
     foreach ($players as $key => $value){
@@ -118,23 +126,27 @@ class App{
     }
     print_r($winners);
   }
-  function addAgent($agent_details){
+
+  public function addAgent($agent_details){
     if($this->is_array_empty($agent_details)){
       return $agent_details;
     }
   }
-  function blockAgent($agent_id){
+
+  public function blockAgent($agent_id){
     if($this->is_empty($agent_id)){
       throw new Exception("Invalid agent id");
     }
     return $agent_details["status"]=false;
   }
-  function lockSlot($slot){
+
+  public function lockSlot($slot){
     if($this->validateSlotLength($slot)){
       return $slot;
     }
   }
-  function getAgentDailyCollectionByDate($agent_id, $date){
+
+  public function getAgentDailyCollectionByDate($agent_id, $date){
     if($this->is_empty($agent_id) || $this->is_empty($date)){
       throw new Exception("Invalid date or agent");
     }
@@ -143,4 +155,5 @@ class App{
       return $agent_collection_data["total_collection"];
     }
   }
+
 }
