@@ -3,11 +3,33 @@ use PHPUnit\Framework\TestCase;
 
 final class AppTest extends TestCase{
   public function testAppCanShowLSKWinners(){
-    $winning_number="341";
-    $players=["jishnu"=>"143","ajith"=>"123","jamshi"=>"424","arjun"=>"341"];
+    $winning_number="125";
+    $players=[
+      [
+        'id'=>1,
+        'name'=>'Jishnu',
+        'slot'=>'123'
+      ],
+      [
+        'id'=>2,
+        'name'=>'Ajith',
+        'slot'=>'124'
+      ],
+      [
+        'id'=>3,
+        'name'=>'Arjun',
+        'slot'=>'125'
+      ]
+    ];
     $app=new App();
-    $result=$app->findLSKWinners($winning_number, $players);
-    $this->assertContains("arjun",$result);
+    $result=$app->findLSKWinners(
+      $winning_number,
+      $players
+    );
+    $this->assertContains(
+      "Arjun",
+      $result
+    );
   }
 
   public function testAppCannotShowLSKWinnersIfInvalidinput(){
