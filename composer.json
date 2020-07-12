@@ -1,19 +1,25 @@
 {
-  "name": "aslamkv/php",
-  "description": "PHP application boilerplate",
+  "name": "j4me-jishnu/Lottery-app",
+  "description": "Lottery application",
   "version": "1.0.0",
-  "type": "library",
+  "type": "application",
   "keywords": [
-    "php",
-    "application",
-    "boilerplate"
+    "Lottery",
+    "application"
   ],
   "license": "MIT",
-  "authors": [{
-    "name": "Aslam",
-    "email": "kv.aslam@gmail.com",
-    "role": "developer"
-  }],
+  "authors": [
+    {
+      "name": "Jishnu",
+      "email": "j4me-jishnu@yahoo.com",
+      "role": "maintainer"
+    },
+    {
+      "name": "Aslam",
+      "email": "kv.aslam@gmail.com",
+      "role": "developer"
+    }
+  ],
   "scripts":{
     "test":"vendor/bin/phpunit --testdox --colors=always --bootstrap vendor/autoload.php tests/"
   },
