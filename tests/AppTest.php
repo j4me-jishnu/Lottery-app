@@ -2,6 +2,12 @@
 use PHPUnit\Framework\TestCase;
 
 final class AppTest extends TestCase{
+  private static $app;
+
+  public static function setUpBeforeClass(): void{
+    self::$app=new App();
+  }
+
   public function testAppCanShowLSKWinners(){
     $winning_number="125";
     $players=[
@@ -42,8 +48,7 @@ final class AppTest extends TestCase{
   }
 
   public function testAppCanValidateSlotNumberDigits(){
-    $app=new App();
-    $result=$app->validateSlotLength("123");
+    $result=self::$app->validateSlotLength("123");
     $this->assertEquals("123",$result);
   }
 
