@@ -20,8 +20,8 @@ class App{
     }
     $winners=[];
     foreach ($players as $key => $value) {
-      if($value==$winning_number){
-        array_push($winners,$key);
+      if($value['slot']==$winning_number){
+        array_push($winners,$value['id']);
       }
     }
     return $winners;
@@ -46,9 +46,9 @@ class App{
           $winners=[];
           $winning_number_arr = array_map('intval', str_split($winning_number));
           foreach ($players as $key => $value) {
-            $value_arr = array_map('intval', str_split($value));
+            $value_arr = array_map('intval', str_split($value['slot']));
             if($winning_number[0]==$value_arr[0] && $winning_number[1]==$value_arr[1]){
-              array_push($winners,$key);
+              array_push($winners,$value['id']);
             }
           }
           return $winners;
@@ -59,9 +59,9 @@ class App{
         $winners=[];
         $winning_number_arr = array_map('intval', str_split($winning_number));
         foreach ($players as $key => $value) {
-          $value_arr = array_map('intval', str_split($value));
+          $value_arr = array_map('intval', str_split($value['slot']));
           if($winning_number[0]==$value_arr[0] && $winning_number[2]==$value_arr[2]){
-            array_push($winners,$key);
+            array_push($winners,$value['id']);
           }
         }
         return $winners;
@@ -72,9 +72,9 @@ class App{
         $winners=[];
         $winning_number_arr = array_map('intval', str_split($winning_number));
         foreach ($players as $key => $value) {
-          $value_arr = array_map('intval', str_split($value));
+          $value_arr = array_map('intval', str_split($value['slot']));
           if($winning_number[1]==$value_arr[1] && $winning_number[2]==$value_arr[2]){
-            array_push($winners,$key);
+            array_push($winners,$value['id']);
           }
         }
         return $winners;
