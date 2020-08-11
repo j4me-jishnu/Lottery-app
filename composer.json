@@ -23,9 +23,16 @@
   "scripts":{
     "test":"vendor/bin/phpunit --testdox --colors=always --bootstrap vendor/autoload.php tests/"
   },
+  "repositories":[
+      {
+          "type": "git",
+          "url": "https://github.com/j4me-jishnu/scraper.git"
+      }
+  ],
   "require": {
     "php": ">=7.2.0",
-    "phpunit/phpunit": "^8.5"
+    "phpunit/phpunit": "^8.5",
+    "j4me-jishnu/scraper": "dev-master"
   },
   "autoload": {
     "classmap": [
