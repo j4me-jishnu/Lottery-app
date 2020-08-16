@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 class App{
-  private function is_empty($value){
+  public function is_empty($value){
     return trim($value)=="";
   }
 
@@ -101,12 +101,6 @@ class App{
     }
   }
 
-  public function adminLogin($username,$password){
-    if($this->validatUsername($username) && $this->validatePassword($password)){
-      return true;
-    }
-  }
-
   public function findBoxGameWinner($winning_number,$players){
     $winners=[];
     $winning_number_arr=array_map('intval',str_split($winning_number));
@@ -127,33 +121,45 @@ class App{
     print_r($winners);
   }
 
-  public function addAgent($agent_details){
-    if($this->is_array_empty($agent_details)){
-      return $agent_details;
-    }
+  public function getWinners(){
+    $winners=[
+      [
+        [
+          [
+            'id'=>1,
+            'name'=>'jishnu',
+          ],
+          [
+            'id'=>6,
+            'name'=>'jyothish',
+          ],
+        ],
+        [
+          [
+            'id'=>4,
+            'name'=>'amith',
+          ],
+          [
+            'id'=>9,
+            'name'=>'mukesh',
+          ],
+        ],
+        [
+          [
+            'id'=>2,
+            'name'=>'arun',
+          ],
+          [
+            'id'=>7,
+            'name'=>'rahul',
+          ],
+        ],
+      ],
+      [
+          'id'=>13,
+          'name'=>'rakesh',
+      ],
+    ];
+    return $winners;
   }
-
-  public function blockAgent($agent_id){
-    if($this->is_empty($agent_id)){
-      throw new Exception("Invalid agent id");
-    }
-    return $agent_details["status"]=false;
-  }
-
-  public function lockSlot($slot){
-    if($this->validateSlotLength($slot)){
-      return $slot;
-    }
-  }
-
-  public function getAgentDailyCollectionByDate($agent_id, $date){
-    if($this->is_empty($agent_id) || $this->is_empty($date)){
-      throw new Exception("Invalid date or agent");
-    }
-    $agent_collection_data=["agent_id"=>"1","date"=>"2020-07-08","total_collection"=>"2562"];
-    if($agent_id==$agent_collection_data["agent_id"]&&$date==$agent_collection_data["date"]){
-      return $agent_collection_data["total_collection"];
-    }
-  }
-
 }
