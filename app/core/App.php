@@ -14,6 +14,15 @@ class App{
     }
   }
 
+  public function validateSlotLength($slot){
+    if(preg_match('/^[0-9]{3}$/', $slot)){
+      return $slot;
+    }
+    else{
+      throw new Exception("Invalid length of number");
+    }
+  }
+
   public function findLSKWinners($winning_number,$players){
     if(empty($winning_number) || empty($players)){
       throw new Exception("No valid input given");
@@ -25,15 +34,6 @@ class App{
       }
     }
     return $winners;
-  }
-
-  public function validateSlotLength($slot){
-    if(preg_match('/^[0-9]{3}$/', $slot)){
-      return $slot;
-    }
-    else{
-      throw new Exception("Invalid length of number");
-    }
   }
 
   public function findLSKModWinners($winning_number,$players,$mod){

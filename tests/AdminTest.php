@@ -30,6 +30,26 @@ final class AdminTest extends TestCase{
     );
   }
 
+  public function testAppCanChangeAgentPassword(): void{
+    $data=[
+      'id'=>1,
+      'name'=>'Arun',
+      'username'=>'Arun123@yahoo.com',
+      'password'=>'324',
+    ];
+    $new_password='Password123$';
+    $result=self::$app->changeAgentPassword($data['id'], $new_password);
+    $this->assertEquals(
+      true,
+      $result
+    );
+  }
+
+  public function testAppCannotChangePasswordIfInvalidInput(): void{
+    $this->expectExceptionMessage("Invalid input");
+    self::$app->changeAgentPassword('','');
+  }
+
   public function testAppCanBlockAgent(): void{
     $result=self::$app->blockAgent('1');
     $this->assertEquals(

@@ -13,6 +13,13 @@ class Admin extends App{
     }
   }
 
+  public function changeAgentPassword($id, $new_password){
+    if(empty($id) && empty($new_password)){
+        throw new Exception("Invalid input", 1);
+    }
+    return true;
+  }
+
   public function blockAgent($agent_id){
     if($this->is_empty($agent_id)){
       throw new Exception("Invalid agent id");
@@ -33,12 +40,6 @@ class Admin extends App{
     $agent_collection_data=["agent_id"=>"1","date"=>"2020-07-08","total_collection"=>"2562"];
     if($agent_id==$agent_collection_data["agent_id"]&&$date==$agent_collection_data["date"]){
       return $agent_collection_data["total_collection"];
-    }
-  }
-
-  public function createAgentCreds($username,$pass){
-    if($this->validatUsername($username) && $this->validatePassword($pass)){
-      return true;
     }
   }
 }
