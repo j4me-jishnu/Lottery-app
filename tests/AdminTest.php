@@ -122,4 +122,17 @@ final class AdminTest extends TestCase{
       '2020-02-21'
     );
   }
+
+  public function testAppCanAddAgentPayment(): void{
+    $result=self::$app->addAgentPayment('1','1500');
+    $this->assertNotEquals(
+      false,
+      $result
+    );
+  }
+
+  public function testAppCannotAddPaymentIfInvalidInput(): void{
+    $this->expectExceptionMessage("Invalid input");
+    self::$app->addAgentPayment('','');
+  }
 }

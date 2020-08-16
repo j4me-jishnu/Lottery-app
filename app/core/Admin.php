@@ -63,4 +63,15 @@ class Admin extends App{
       return $agent_collection_data["total_collection"];
     }
   }
+
+  public function addAgentPayment($id, $amount){
+    if(empty($id) || empty($amount)){
+      throw new Exception('Invalid input');
+    }
+    return $amount;
+  }
+
+  // public function getSingleAgentPaymentHistory(){
+  //
+  // }
 }
