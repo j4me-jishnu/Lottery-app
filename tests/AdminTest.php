@@ -50,6 +50,17 @@ final class AdminTest extends TestCase{
     self::$app->changeAgentPassword('','');
   }
 
+  public function testAppCanDeleteAgent(): void{
+    $id=1;
+    $result=self::$app->deleteAgent($id);
+    $this->assertEquals(true,$result);
+  }
+
+  public function testAppCannotDeleteAgentIfInvalidId(): void{
+    $this->expectExceptionMessage("Invalid input");
+    self::$app->deleteAgent('');
+  }
+
   public function testAppCanBlockAgent(): void{
     $result=self::$app->blockAgent('1');
     $this->assertEquals(

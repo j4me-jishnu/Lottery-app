@@ -15,7 +15,14 @@ class Admin extends App{
 
   public function changeAgentPassword($id, $new_password){
     if(empty($id) && empty($new_password)){
-        throw new Exception("Invalid input", 1);
+        throw new Exception("Invalid input");
+    }
+    return true;
+  }
+
+  public function deleteAgent($id){
+    if(empty($id)){
+      throw new Exception("Invalid input");
     }
     return true;
   }
