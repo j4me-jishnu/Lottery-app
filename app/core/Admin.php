@@ -40,11 +40,18 @@ class Admin extends App{
     }
   }
 
-    public function setMaxPlayerLimit($lim){
+  public function setMaxPlayerLimit($lim){
     if(empty($lim)){
       throw new Exception('Invalid input');
     }
     return $game['player_limit']=$lim;
+  }
+
+  public function setMaxSlotForPlayer($lim){
+    if(empty($lim)){
+      throw new Exception('Invalid input');
+    }
+    return $game['player_slot_lim']=$lim;
   }
 
   public function getAgentDailyCollectionByDate($agent_id, $date){
