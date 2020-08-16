@@ -71,7 +71,15 @@ class Admin extends App{
     return $amount;
   }
 
-  // public function getSingleAgentPaymentHistory(){
-  //
-  // }
+  public function getSingleAgentPaymentDetails($id){
+    if(empty($id)){
+      throw new Exception('Invalid ID');
+    }
+    return $agt_pmt_dtls=[
+        'id'=>1,
+        'last_payment'=>25000,
+        'total_due'=>15000,
+        'total_paid'=>10000,
+      ];
+  }
 }

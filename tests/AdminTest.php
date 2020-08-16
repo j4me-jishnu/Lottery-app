@@ -135,4 +135,17 @@ final class AdminTest extends TestCase{
     $this->expectExceptionMessage("Invalid input");
     self::$app->addAgentPayment('','');
   }
+
+  public function testAppShowSingleAgentPmtDetails(): void{
+    $result=self::$app->getSingleAgentPaymentDetails(1);
+    $this->assertNotEquals(
+      false,
+      $result
+    );
+  }
+
+  public function testAppCannotShowAgentPmtDetailsIfInvalidId(): void{
+    $this->expectExceptionMessage("Invalid ID");
+    self::$app->getSingleAgentPaymentDetails('');
+  }
 }
