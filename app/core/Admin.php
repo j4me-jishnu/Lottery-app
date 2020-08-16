@@ -40,6 +40,13 @@ class Admin extends App{
     }
   }
 
+    public function setMaxPlayerLimit($lim){
+    if(empty($lim)){
+      throw new Exception('Invalid input');
+    }
+    return $game['player_limit']=$lim;
+  }
+
   public function getAgentDailyCollectionByDate($agent_id, $date){
     if($this->is_empty($agent_id) || $this->is_empty($date)){
       throw new Exception("Invalid date or agent");

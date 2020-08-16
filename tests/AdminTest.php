@@ -87,6 +87,16 @@ final class AdminTest extends TestCase{
     self::$app->lockSlot('');
   }
 
+  public function testAppCanSetMaxPlayerLimit(): void{
+    $result=self::$app->setMaxPlayerLimit(15);
+    $this->assertNotEquals(false,$result);
+  }
+
+  public function testAppCannotSetMaxPlayerLimitIfNoInput(): void{
+    $this->expectExceptionMessage('Invalid input');
+    self::$app->setMaxPlayerLimit('');
+  }
+
   public function testAppCanShowAgentCollectionByDate(): void{
     $result=self::$app->getAgentDailyCollectionByDate('1','2020-07-08');
     $this->assertEquals(
